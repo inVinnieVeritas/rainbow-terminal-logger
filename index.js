@@ -18,15 +18,12 @@ const colorfulLogger = winston.createLogger({
 });
 
 function getFormattedLevel(level) {
-  switch (level) {
-    case 'info':
-      return chalk.red(level);
-    case 'warn':
-      return chalk.green(level);
-    case 'error':
-      return chalk.yellow(level);
-    default:
-      return level;
+  const rainbowColors = [ 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+  let currentColorIndex = 0; // Keep track of color
+
+  return chalk[rainbowColors[currentColorIndex++ % rainbowColors.length]](level);
+}
+
   }
 }
 
